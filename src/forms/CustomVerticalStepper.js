@@ -1,3 +1,4 @@
+// CustomVerticalStepper.jsx
 import React, { useState } from "react";
 import PersonalDetailsStep from "./PersonalDetailsStep";
 import PreferencesStep from "./PreferencesStep";
@@ -83,36 +84,41 @@ export default function CustomVerticalStepper() {
           ipRole3={ipRole3}
           setIpRole3={setIpRole3}
           onValidate={() => {
-            // Validate Preferences and handle errors
             const errors = [];
-            if (!preference1 || !country1Pref1 || !country2Pref1) {
-              errors.push(
-                "Preference 1, Country 1, and Country 2 are required."
-              );
-            } else if (country1Pref1 === country2Pref1) {
-              errors.push(
-                "For Preference 1, Country 1 and Country 2 must be different."
-              );
+            if (preference1 !== "IP") {
+              if (!preference1 || !country1Pref1 || !country2Pref1) {
+                errors.push(
+                  "Preference 1, Country 1, and Country 2 are required."
+                );
+              } else if (country1Pref1 === country2Pref1) {
+                errors.push(
+                  "For Preference 1, Country 1 and Country 2 must be different."
+                );
+              }
             }
 
-            if (!preference2 || !country1Pref2 || !country2Pref2) {
-              errors.push(
-                "Preference 2, Country 1, and Country 2 are required."
-              );
-            } else if (country1Pref2 === country2Pref2) {
-              errors.push(
-                "For Preference 2, Country 1 and Country 2 must be different."
-              );
+            if (preference2 !== "IP") {
+              if (!preference2 || !country1Pref2 || !country2Pref2) {
+                errors.push(
+                  "Preference 2, Country 1, and Country 2 are required."
+                );
+              } else if (country1Pref2 === country2Pref2) {
+                errors.push(
+                  "For Preference 2, Country 1 and Country 2 must be different."
+                );
+              }
             }
 
-            if (!preference3 || !country1Pref3 || !country2Pref3) {
-              errors.push(
-                "Preference 3, Country 1, and Country 2 are required."
-              );
-            } else if (country1Pref3 === country2Pref3) {
-              errors.push(
-                "For Preference 3, Country 1 and Country 2 must be different."
-              );
+            if (preference3 !== "IP") {
+              if (!preference3 || !country1Pref3 || !country2Pref3) {
+                errors.push(
+                  "Preference 3, Country 1, and Country 2 are required."
+                );
+              } else if (country1Pref3 === country2Pref3) {
+                errors.push(
+                  "For Preference 3, Country 1 and Country 2 must be different."
+                );
+              }
             }
 
             if (preference1 === "IP" && !ipRole1) {
