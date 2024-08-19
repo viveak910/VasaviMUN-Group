@@ -21,11 +21,18 @@ export default function PreferencesStep({
   setCountry1Pref3,
   country2Pref3,
   setCountry2Pref3,
+  ipRole1,
+  setIpRole1,
+  ipRole2,
+  setIpRole2,
+  ipRole3,
+  setIpRole3,
 }) {
-  // Filter committees based on selected preferences
-  const filteredCommittees2 = committees.filter((c) => c !== preference1);
+  const filteredCommittees2 = committees.filter(
+    (c) => c !== preference1 || c === "IP"
+  );
   const filteredCommittees3 = filteredCommittees2.filter(
-    (c) => c !== preference2
+    (c) => c !== preference2 || c === "IP"
   );
 
   return (
@@ -35,6 +42,8 @@ export default function PreferencesStep({
           <h3>Committee Preference</h3>
         </label>
       </div>
+
+      {/* Preference 1 */}
       <h4>Preference 1</h4>
       <select
         value={preference1}
@@ -48,7 +57,24 @@ export default function PreferencesStep({
           </option>
         ))}
       </select>
-      {preference1 && (
+
+      {preference1 === "IP" && (
+        <div className="ip-role">
+          <label>
+            <select
+              value={ipRole1}
+              onChange={(e) => setIpRole1(e.target.value)}
+              required
+            >
+              <option value="">Select Role</option>
+              <option value="Reporter">Reporter</option>
+              <option value="Photographer">Photographer</option>
+            </select>
+          </label>
+        </div>
+      )}
+
+      {preference1 && preference1 !== "IP" && (
         <div className="country-preferences">
           <input
             type="text"
@@ -66,9 +92,12 @@ export default function PreferencesStep({
           />
         </div>
       )}
+
       <br></br>
       <br></br>
-      <h4> Preference 2 </h4>
+
+      {/* Preference 2 */}
+      <h4>Preference 2</h4>
       <select
         value={preference2}
         onChange={(e) => setPreference2(e.target.value)}
@@ -82,7 +111,24 @@ export default function PreferencesStep({
           </option>
         ))}
       </select>
-      {preference2 && (
+
+      {preference2 === "IP" && (
+        <div className="ip-role">
+          <label>
+            <select
+              value={ipRole2}
+              onChange={(e) => setIpRole2(e.target.value)}
+              required
+            >
+              <option value="">Select Role</option>
+              <option value="Reporter">Reporter</option>
+              <option value="Photographer">Photographer</option>
+            </select>
+          </label>
+        </div>
+      )}
+
+      {preference2 && preference2 !== "IP" && (
         <div className="country-preferences">
           <input
             type="text"
@@ -100,9 +146,12 @@ export default function PreferencesStep({
           />
         </div>
       )}
+
       <br></br>
       <br></br>
-      <h4> Preference 3 </h4>
+
+      {/* Preference 3 */}
+      <h4>Preference 3</h4>
       <select
         value={preference3}
         onChange={(e) => setPreference3(e.target.value)}
@@ -116,7 +165,24 @@ export default function PreferencesStep({
           </option>
         ))}
       </select>
-      {preference3 && (
+
+      {preference3 === "IP" && (
+        <div className="ip-role">
+          <label>
+            <select
+              value={ipRole3}
+              onChange={(e) => setIpRole3(e.target.value)}
+              required
+            >
+              <option value="">Select Role</option>
+              <option value="Reporter">Reporter</option>
+              <option value="Photographer">Photographer</option>
+            </select>
+          </label>
+        </div>
+      )}
+
+      {preference3 && preference3 !== "IP" && (
         <div className="country-preferences">
           <input
             type="text"

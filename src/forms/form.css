@@ -127,14 +127,13 @@ textarea {
   resize: vertical;
 }
 
-/* New CSS for country input fields */
 .country-preferences {
   display: flex;
-  gap: 10px; /* Space between the inputs */
+  gap: 10px;
 }
 
 .country-preferences input {
-  flex: 1; /* Make inputs take equal space */
+  flex: 1;
 }
 
 .hd .btn {
@@ -149,4 +148,7 @@ textarea {
   transition: 300ms ease, color 300ms ease;
   margin-right: 10px;
   background: #000000;
+}
+.ip-role {
+  width: 50%;
 }

@@ -25,6 +25,9 @@ export default function CustomVerticalStepper() {
   const [country2Pref2, setCountry2Pref2] = useState("");
   const [country1Pref3, setCountry1Pref3] = useState("");
   const [country2Pref3, setCountry2Pref3] = useState("");
+  const [ipRole1, setIpRole1] = useState("");
+  const [ipRole2, setIpRole2] = useState("");
+  const [ipRole3, setIpRole3] = useState("");
   const [transactionId, setTransactionId] = useState("");
 
   const steps = [
@@ -73,6 +76,63 @@ export default function CustomVerticalStepper() {
           setCountry1Pref3={setCountry1Pref3}
           country2Pref3={country2Pref3}
           setCountry2Pref3={setCountry2Pref3}
+          ipRole1={ipRole1}
+          setIpRole1={setIpRole1}
+          ipRole2={ipRole2}
+          setIpRole2={setIpRole2}
+          ipRole3={ipRole3}
+          setIpRole3={setIpRole3}
+          onValidate={() => {
+            // Validate Preferences and handle errors
+            const errors = [];
+            if (!preference1 || !country1Pref1 || !country2Pref1) {
+              errors.push(
+                "Preference 1, Country 1, and Country 2 are required."
+              );
+            } else if (country1Pref1 === country2Pref1) {
+              errors.push(
+                "For Preference 1, Country 1 and Country 2 must be different."
+              );
+            }
+
+            if (!preference2 || !country1Pref2 || !country2Pref2) {
+              errors.push(
+                "Preference 2, Country 1, and Country 2 are required."
+              );
+            } else if (country1Pref2 === country2Pref2) {
+              errors.push(
+                "For Preference 2, Country 1 and Country 2 must be different."
+              );
+            }
+
+            if (!preference3 || !country1Pref3 || !country2Pref3) {
+              errors.push(
+                "Preference 3, Country 1, and Country 2 are required."
+              );
+            } else if (country1Pref3 === country2Pref3) {
+              errors.push(
+                "For Preference 3, Country 1 and Country 2 must be different."
+              );
+            }
+
+            if (preference1 === "IP" && !ipRole1) {
+              errors.push("Please select a role for IP in Preference 1.");
+            }
+
+            if (preference2 === "IP" && !ipRole2) {
+              errors.push("Please select a role for IP in Preference 2.");
+            }
+
+            if (preference3 === "IP" && !ipRole3) {
+              errors.push("Please select a role for IP in Preference 3.");
+            }
+
+            if (errors.length) {
+              alert(errors.join("\n"));
+              return false;
+            }
+            return true;
+          }}
         />
       ),
     },
@@ -87,8 +147,29 @@ export default function CustomVerticalStepper() {
     },
   ];
 
+  const validateStep = () => {
+    if (activeStep === 0) {
+      // Personal Details validation
+      if (
+        !name ||
+        !phone ||
+        !email ||
+        !address ||
+        (isVasavi && (!rollNumber || !year || !branch || !section))
+      ) {
+        alert("Please fill all required fields in Personal Details.");
+        return false;
+      }
+    } else if (activeStep === 1) {
+      // Preferences validation
+      const preferencesValid = steps[1].component.props.onValidate();
+      if (!preferencesValid) return false;
+    }
+    return true;
+  };
+
   const handleNext = () => {
-    if (activeStep < steps.length - 1) {
+    if (validateStep()) {
       setActiveStep((prevStep) => prevStep + 1);
       window.scrollTo({
         top: 0,
@@ -127,6 +208,9 @@ export default function CustomVerticalStepper() {
     setCountry2Pref2("");
     setCountry1Pref3("");
     setCountry2Pref3("");
+    setIpRole1("");
+    setIpRole2("");
+    setIpRole3("");
     setTransactionId("");
   };
 
