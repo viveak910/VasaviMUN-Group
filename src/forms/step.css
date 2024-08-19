@@ -1,0 +1,108 @@
+.stepper-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000000;
+  padding: 20px;
+
+  background-image: linear-gradient(
+      rgba(12, 12, 12, 0.717),
+      rgba(16, 16, 16, 0.71)
+    ),
+    url("TeamWork.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+}
+
+.stepper-container {
+  background: #e1e1e13c;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(83, 83, 83, 0.088);
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+
+  box-sizing: border-box;
+}
+
+.stepper-header {
+  margin-bottom: 20px;
+}
+
+.step-header {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.stepper-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+h4,
+h3,
+h2 {
+  font-weight: 700;
+  color: white;
+  padding: 0;
+}
+h4 {
+  margin-bottom: 0;
+}
+
+.btn {
+  background-color: #0e14c1;
+  border: none;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 17px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  margin-right: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #1d1d1d;
+}
+
+.reset-container {
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .stepper-wrapper {
+    background-image: linear-gradient(
+      rgba(12, 12, 12, 0.717),
+      rgba(16, 16, 16, 0.71)
+    );
+
+    background-position: top;
+    padding: 10px;
+    min-height: 100vh;
+  }
+
+  .stepper-container {
+    padding: 20px; /* Reduce padding inside the container */
+    max-width: 90%; /* Make the content container more compact on mobile */
+  }
+
+  .btn {
+    font-size: 14px; /* Reduce button font size */
+    padding: 8px 16px; /* Adjust button padding */
+  }
+}

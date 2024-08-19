@@ -1,0 +1,83 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 0;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  max-width: 80%;
+  width: fit-content;
+  z-index: 100;
+}
+
+.nav-links li {
+  display: inline-block;
+  margin: 0 12px;
+}
+
+.nav-links li a {
+  position: relative;
+  color: #333;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 6px 0;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-links li a:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: #e91e63;
+  border-radius: 12px;
+  transition: all 0.4s ease;
+}
+
+.nav-links li a:hover:before {
+  width: 100%;
+}
+
+/* Style for the active nav link */
+.nav-links li a.active {
+  color: #e91e63;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .nav-links {
+    padding: 8px 0;
+  }
+
+  .nav-links li {
+    margin: 0 10px;
+  }
+
+  .nav-links li a {
+    font-size: 18px;
+    padding: 4px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    padding: 6px 0;
+  }
+
+  .nav-links li {
+    margin: 0 8px;
+  }
+
+  .nav-links li a {
+    font-size: 16px;
+    padding: 4px 0;
+  }
+}
