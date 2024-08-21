@@ -33,7 +33,6 @@ export default function CustomVerticalStepper() {
 
   const steps = [
     {
-      label: "Personal Details",
       component: (
         <PersonalDetailsStep
           name={name}
@@ -58,7 +57,6 @@ export default function CustomVerticalStepper() {
       ),
     },
     {
-      label: "Preferences",
       component: (
         <PreferencesStep
           preference1={preference1}
@@ -92,9 +90,7 @@ export default function CustomVerticalStepper() {
                 errors.push(
                   "Preference 1, Country 1, and Country 2 are required."
                 );
-              } else if (
-                country1Pref1.toLowerCase() === country2Pref1.toLowerCase()
-              ) {
+              } else if (country1Pref1 === country2Pref1) {
                 errors.push(
                   "For Preference 1, Country 1 and Country 2 must be different."
                 );
@@ -106,9 +102,7 @@ export default function CustomVerticalStepper() {
                 errors.push(
                   "Preference 2, Country 1, and Country 2 are required."
                 );
-              } else if (
-                country1Pref2.toLowerCase() === country2Pref2.toLowerCase()
-              ) {
+              } else if (country1Pref2 === country2Pref2) {
                 errors.push(
                   "For Preference 2, Country 1 and Country 2 must be different."
                 );
@@ -120,9 +114,7 @@ export default function CustomVerticalStepper() {
                 errors.push(
                   "Preference 3, Country 1, and Country 2 are required."
                 );
-              } else if (
-                country1Pref3.toLowerCase() === country2Pref3.toLowerCase()
-              ) {
+              } else if (country1Pref3 === country2Pref3) {
                 errors.push(
                   "For Preference 3, Country 1 and Country 2 must be different."
                 );
@@ -151,7 +143,6 @@ export default function CustomVerticalStepper() {
       ),
     },
     {
-      label: "Payment",
       component: (
         <PaymentStep
           isVasavi={isVasavi}
@@ -179,69 +170,17 @@ export default function CustomVerticalStepper() {
       // Preferences validation
       const preferencesValid = steps[1].component.props.onValidate();
       if (!preferencesValid) return false;
-    } else if (activeStep === 2) {
-      // Payment validation
-      if (!transactionId) {
-        alert("Transaction ID is required.");
-        return false;
-      }
     }
     return true;
   };
 
   const handleNext = () => {
     if (validateStep()) {
-      if (activeStep === steps.length - 1) {
-        const formData = {
-          name,
-          phone,
-          email,
-          address,
-          isVasavi,
-          rollNumber,
-          year,
-          branch,
-          section,
-          preference1,
-          preference2,
-          preference3,
-          country1Pref1,
-          country2Pref1,
-          country1Pref2,
-          country2Pref2,
-          country1Pref3,
-          country2Pref3,
-          ipRole1,
-          ipRole2,
-          ipRole3,
-          transactionId,
-        };
-
-        fetch("https://mun-dat.vercel.app/registration", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        })
-          .then((response) => {
-            if (response.ok) {
-              alert("Registration successful!");
-            } else {
-              alert("Registration failed. Please try again.");
-            }
-          })
-          .catch((error) => {
-            console.error("Error during form submission:", error);
-            alert("An error occurred. Please try again later.");
-          });
-      } else {
-        setActiveStep((prevStep) => prevStep + 1);
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }
+      setActiveStep((prevStep) => prevStep + 1);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -253,6 +192,32 @@ export default function CustomVerticalStepper() {
         behavior: "smooth",
       });
     }
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
+    setName("");
+    setPhone("");
+    setEmail("");
+    setAddress("");
+    setIsVasavi(false);
+    setRollNumber("");
+    setYear("");
+    setBranch("");
+    setSection("");
+    setPreference1("");
+    setPreference2("");
+    setPreference3("");
+    setCountry1Pref1("");
+    setCountry2Pref1("");
+    setCountry1Pref2("");
+    setCountry2Pref2("");
+    setCountry1Pref3("");
+    setCountry2Pref3("");
+    setIpRole1("");
+    setIpRole2("");
+    setIpRole3("");
+    setTransactionId("");
   };
 
   return (
@@ -273,8 +238,8 @@ export default function CustomVerticalStepper() {
               Next
             </button>
           ) : (
-            <button className="btn" onClick={handleSubmit}>
-              Submit
+            <button className="btn" onClick={handleReset}>
+              Reset
             </button>
           )}
         </div>
