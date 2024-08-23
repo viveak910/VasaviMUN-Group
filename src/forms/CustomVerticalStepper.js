@@ -7,6 +7,7 @@ import "./form.css";
 
 export default function CustomVerticalStepper() {
   const [activeStep, setActiveStep] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -154,7 +155,6 @@ export default function CustomVerticalStepper() {
 
   const validateStep = () => {
     if (activeStep === 0) {
-      // Personal Details validation
       if (
         !name ||
         !phone ||
@@ -194,7 +194,8 @@ export default function CustomVerticalStepper() {
   };
 
   const handleSubmit = () => {
-    // Example of submitting the data to a server or backend endpoint
+    setLoading(true);
+
     const formData = {
       name,
       phone,
@@ -233,37 +234,46 @@ export default function CustomVerticalStepper() {
       .then((data) => {
         console.log("Success:", data);
         alert("Form submitted successfully!");
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error:", error);
         alert("Failed to submit the form. Please try again.");
+        setLoading(false);
       });
   };
 
   return (
     <div className="stepper-wrapper">
-      <div className="stepper-container">
-        <div className="stepper-header">
-          <div className="step-header">{steps[activeStep].label}</div>
+      {loading ? (
+        <div className="loading-screen">
+          <div className="spinner"></div>
+          <p>Loading...</p>
         </div>
-        <div className="stepper-content">{steps[activeStep].component}</div>
-        <div className="step-actions">
-          {activeStep > 0 && (
-            <button className="btn" onClick={handleBack}>
-              Back
-            </button>
-          )}
-          {activeStep < steps.length - 1 ? (
-            <button className="btn" onClick={handleNext}>
-              Next
-            </button>
-          ) : (
-            <button className="btn" onClick={handleSubmit}>
-              Submit
-            </button>
-          )}
+      ) : (
+        <div className="stepper-container">
+          <div className="stepper-header">
+            <div className="step-header">{steps[activeStep].label}</div>
+          </div>
+          <div className="stepper-content">{steps[activeStep].component}</div>
+          <div className="step-actions">
+            {activeStep > 0 && (
+              <button className="btn" onClick={handleBack}>
+                Back
+              </button>
+            )}
+            {activeStep < steps.length - 1 ? (
+              <button className="btn" onClick={handleNext}>
+                Next
+              </button>
+            ) : (
+              <button className="btn" onClick={handleSubmit}>
+                Submit
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
