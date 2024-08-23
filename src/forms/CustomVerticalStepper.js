@@ -1,4 +1,3 @@
-// CustomVerticalStepper.jsx
 import React, { useState } from "react";
 import PersonalDetailsStep from "./PersonalDetailsStep";
 import PreferencesStep from "./PreferencesStep";
@@ -194,30 +193,51 @@ export default function CustomVerticalStepper() {
     }
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-    setName("");
-    setPhone("");
-    setEmail("");
-    setAddress("");
-    setIsVasavi(false);
-    setRollNumber("");
-    setYear("");
-    setBranch("");
-    setSection("");
-    setPreference1("");
-    setPreference2("");
-    setPreference3("");
-    setCountry1Pref1("");
-    setCountry2Pref1("");
-    setCountry1Pref2("");
-    setCountry2Pref2("");
-    setCountry1Pref3("");
-    setCountry2Pref3("");
-    setIpRole1("");
-    setIpRole2("");
-    setIpRole3("");
-    setTransactionId("");
+  const handleSubmit = () => {
+    // Example of submitting the data to a server or backend endpoint
+    const formData = {
+      name,
+      phone,
+      email,
+      address,
+      isVasavi,
+      rollNumber,
+      year,
+      branch,
+      section,
+      preference1,
+      preference2,
+      preference3,
+      country1Pref1,
+      country2Pref1,
+      country1Pref2,
+      country2Pref2,
+      country1Pref3,
+      country2Pref3,
+      ipRole1,
+      ipRole2,
+      ipRole3,
+      transactionId,
+    };
+
+    console.log("Submitting form data:", formData);
+
+    fetch("https://mun-dat.vercel.app/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        alert("Form submitted successfully!");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Failed to submit the form. Please try again.");
+      });
   };
 
   return (
@@ -238,8 +258,8 @@ export default function CustomVerticalStepper() {
               Next
             </button>
           ) : (
-            <button className="btn" onClick={handleReset}>
-              Reset
+            <button className="btn" onClick={handleSubmit}>
+              Submit
             </button>
           )}
         </div>
