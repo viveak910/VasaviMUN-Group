@@ -5,7 +5,6 @@
   min-height: 100vh;
   background-color: #000000;
   padding: 20px;
-
   background-image: linear-gradient(
       rgba(12, 12, 12, 0.717),
       rgba(16, 16, 16, 0.71)
@@ -80,16 +79,23 @@ h4 {
 .btn:hover {
   background-color: #1d1d1d;
 }
+.reset-container {
+  text-align: center;
+}
+
 .loader-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
+
 .loader-container p {
-  font-size: large;
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: bold;
   color: white;
+  margin-top: 20px;
 }
 
 .pulsing-circle {

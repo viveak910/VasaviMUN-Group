@@ -16,10 +16,17 @@ export default function PaymentStep({
           ? "Pay the registration fee of ₹1500"
           : "Pay the registration fee of ₹2000"}
       </h2>
-      <a href={paymentLink} target="_blank" rel="noopener noreferrer">
-        <h3>Click here to proceed with payment</h3>
-      </a>
-      <div>
+      <div className="hd">
+        <label className="btn">
+          <a
+            href={paymentLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
+          >
+            <h3>Click to pay</h3>
+          </a>
+        </label>
         <input
           type="text"
           id="transaction-id"
