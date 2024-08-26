@@ -248,7 +248,9 @@ export default function CustomVerticalStepper() {
       {loading ? (
         <div class="loader-container">
           <div class="pulsing-circle"></div>
-          <p>Loading...</p>
+          <br></br>
+          <br></br>
+          <p>Submitting Response</p>
         </div>
       ) : (
         <div className="stepper-container">
