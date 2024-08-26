@@ -190,9 +190,9 @@ export default function CustomVerticalStepper() {
   return (
     <div className="stepper-wrapper">
       {loading ? (
-        <div className="loading-screen">
-          <div className="spinner"></div>
-          <p>Loading...</p>
+        <div class="loader-container">
+          <div class="pulsing-circle"></div>
+          <p>Processing</p>
         </div>
       ) : (
         <div className="stepper-container">
