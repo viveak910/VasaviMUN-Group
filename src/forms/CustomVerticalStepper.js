@@ -239,6 +239,7 @@ export default function CustomVerticalStepper() {
         .then((data) => {
           console.log("Success:", data);
           alert("Form submitted successfully!");
+          resetForm();
           setLoading(false);
         })
         .catch((error) => {
@@ -247,6 +248,32 @@ export default function CustomVerticalStepper() {
           setLoading(false);
         });
     }
+  };
+
+  const resetForm = () => {
+    setName("");
+    setPhone("");
+    setEmail("");
+    setAddress("");
+    setIsVasavi(false);
+    setRollNumber("");
+    setYear("");
+    setBranch("");
+    setSection("");
+    setPreference1("");
+    setPreference2("");
+    setPreference3("");
+    setCountry1Pref1("");
+    setCountry2Pref1("");
+    setCountry1Pref2("");
+    setCountry2Pref2("");
+    setCountry1Pref3("");
+    setCountry2Pref3("");
+    setIpRole1("");
+    setIpRole2("");
+    setIpRole3("");
+    setTransactionId("");
+    setActiveStep(0);
   };
 
   return (
