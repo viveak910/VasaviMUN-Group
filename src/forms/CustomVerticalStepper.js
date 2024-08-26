@@ -166,9 +166,13 @@ export default function CustomVerticalStepper() {
         return false;
       }
     } else if (activeStep === 1) {
-      // Preferences validation
       const preferencesValid = steps[1].component.props.onValidate();
       if (!preferencesValid) return false;
+    } else if (activeStep === 2) {
+      if (!transactionId) {
+        alert("Transaction ID is required.");
+        return false;
+      }
     }
     return true;
   };
@@ -194,53 +198,55 @@ export default function CustomVerticalStepper() {
   };
 
   const handleSubmit = () => {
-    setLoading(true);
+    if (validateStep()) {
+      setLoading(true);
 
-    const formData = {
-      name,
-      phone,
-      email,
-      address,
-      isVasavi,
-      rollNumber,
-      year,
-      branch,
-      section,
-      preference1,
-      preference2,
-      preference3,
-      country1Pref1,
-      country2Pref1,
-      country1Pref2,
-      country2Pref2,
-      country1Pref3,
-      country2Pref3,
-      ipRole1,
-      ipRole2,
-      ipRole3,
-      transactionId,
-    };
+      const formData = {
+        name,
+        phone,
+        email,
+        address,
+        isVasavi,
+        rollNumber,
+        year,
+        branch,
+        section,
+        preference1,
+        preference2,
+        preference3,
+        country1Pref1,
+        country2Pref1,
+        country1Pref2,
+        country2Pref2,
+        country1Pref3,
+        country2Pref3,
+        ipRole1,
+        ipRole2,
+        ipRole3,
+        transactionId,
+      };
 
-    console.log("Submitting form data:", formData);
+      console.log("Submitting form data:", formData);
 
-    fetch("https://mun-registration.vercel.app/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        alert("Form submitted successfully!");
-        setLoading(false);
+      fetch("https://mun-registration.vercel.app/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("Failed to submit the form. Please try again.");
-        setLoading(false);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+          alert("Form submitted successfully!");
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Failed to submit the form. Please try again.");
+          setLoading(false);
+        });
+    }
   };
 
   return (
