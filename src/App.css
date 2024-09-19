@@ -1,3 +1,7 @@
 .App {
   background-color: black;
 }
+#head {
+  text-align: center;
+  color: white;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./form.css"; // Ensure this CSS file is imported
+import "./form.css";
 
 export default function PersonalDetailsStep({
   name,
@@ -54,7 +54,6 @@ export default function PersonalDetailsStep({
         required
       />
 
-      {/* MUN Experience Textarea with white background */}
       <textarea
         className="mun-experience"
         placeholder="Describe your MUN experience"

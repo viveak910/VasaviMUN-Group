@@ -1,6 +1,6 @@
 import React from "react";
 
-const committees = ["DISEC", "UNHRC", "AIPPM", "MARVEL", "IP"];
+const committees = ["DISEC", "AIPPM", "UNODC", "UNHRC", "CCC", "IP"];
 
 export default function PreferencesStep({
   preference1,
