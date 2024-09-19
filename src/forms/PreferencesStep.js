@@ -36,22 +36,18 @@ export default function PreferencesStep({
   ipRole3,
   setIpRole3,
 }) {
-  // Count how many times IP is selected
   const ipCount =
     (preference1 === "IP" ? 1 : 0) + (preference2 === "IP" ? 1 : 0);
 
-  // Filter committees for the second and third preferences
   const filteredCommittees2 = committees.filter(
     (c) => c !== preference1 || c === "IP"
   );
 
-  // If IP is selected twice, remove it from the third preference
   const filteredCommittees3 =
     ipCount === 2
       ? filteredCommittees2.filter((c) => c !== "IP")
       : filteredCommittees2.filter((c) => c !== preference2 || c === "IP");
 
-  // Filter IP roles to ensure unique selection for each preference
   const filteredIpRoles2 = ipRoles.filter((role) => role !== ipRole1);
   const filteredIpRoles3 = filteredIpRoles2.filter((role) => role !== ipRole2);
 
