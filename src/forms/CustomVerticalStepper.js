@@ -31,6 +31,79 @@ export default function CustomVerticalStepper() {
   const [ipRole3, setIpRole3] = useState("");
   const [transactionId, setTransactionId] = useState("");
 
+  const validatePreferences = () => {
+    const errors = [];
+
+    if (preference1.trim().toLowerCase() !== "ip") {
+      if (
+        !preference1.trim() ||
+        !country1Pref1.trim() ||
+        !country2Pref1.trim()
+      ) {
+        errors.push("Preference 1, Country 1, and Country 2 are required.");
+      } else if (
+        country1Pref1.trim().toLowerCase() ===
+        country2Pref1.trim().toLowerCase()
+      ) {
+        errors.push(
+          "For Preference 1, Country 1 and Country 2 must be different."
+        );
+      }
+    }
+
+    if (preference2.trim().toLowerCase() !== "ip") {
+      if (
+        !preference2.trim() ||
+        !country1Pref2.trim() ||
+        !country2Pref2.trim()
+      ) {
+        errors.push("Preference 2, Country 1, and Country 2 are required.");
+      } else if (
+        country1Pref2.trim().toLowerCase() ===
+        country2Pref2.trim().toLowerCase()
+      ) {
+        errors.push(
+          "For Preference 2, Country 1 and Country 2 must be different."
+        );
+      }
+    }
+
+    if (preference3.trim().toLowerCase() !== "ip") {
+      if (
+        !preference3.trim() ||
+        !country1Pref3.trim() ||
+        !country2Pref3.trim()
+      ) {
+        errors.push("Preference 3, Country 1, and Country 2 are required.");
+      } else if (
+        country1Pref3.trim().toLowerCase() ===
+        country2Pref3.trim().toLowerCase()
+      ) {
+        errors.push(
+          "For Preference 3, Country 1 and Country 2 must be different."
+        );
+      }
+    }
+
+    if (preference1.trim().toLowerCase() === "ip" && !ipRole1.trim()) {
+      errors.push("Please select a role for IP in Preference 1.");
+    }
+
+    if (preference2.trim().toLowerCase() === "ip" && !ipRole2.trim()) {
+      errors.push("Please select a role for IP in Preference 2.");
+    }
+
+    if (preference3.trim().toLowerCase() === "ip" && !ipRole3.trim()) {
+      errors.push("Please select a role for IP in Preference 3.");
+    }
+
+    if (errors.length > 0) {
+      alert(errors.join("\n"));
+      return false;
+    }
+    return true;
+  };
+
   const steps = [
     {
       component: (
@@ -83,62 +156,6 @@ export default function CustomVerticalStepper() {
           setIpRole2={setIpRole2}
           ipRole3={ipRole3}
           setIpRole3={setIpRole3}
-          onValidate={() => {
-            const errors = [];
-            if (preference1 !== "IP") {
-              if (!preference1 || !country1Pref1 || !country2Pref1) {
-                errors.push(
-                  "Preference 1, Country 1, and Country 2 are required."
-                );
-              } else if (country1Pref1 === country2Pref1) {
-                errors.push(
-                  "For Preference 1, Country 1 and Country 2 must be different."
-                );
-              }
-            }
-
-            if (preference2 !== "IP") {
-              if (!preference2 || !country1Pref2 || !country2Pref2) {
-                errors.push(
-                  "Preference 2, Country 1, and Country 2 are required."
-                );
-              } else if (country1Pref2 === country2Pref2) {
-                errors.push(
-                  "For Preference 2, Country 1 and Country 2 must be different."
-                );
-              }
-            }
-
-            if (preference3 !== "IP") {
-              if (!preference3 || !country1Pref3 || !country2Pref3) {
-                errors.push(
-                  "Preference 3, Country 1, and Country 2 are required."
-                );
-              } else if (country1Pref3 === country2Pref3) {
-                errors.push(
-                  "For Preference 3, Country 1 and Country 2 must be different."
-                );
-              }
-            }
-
-            if (preference1 === "IP" && !ipRole1) {
-              errors.push("Please select a role for IP in Preference 1.");
-            }
-
-            if (preference2 === "IP" && !ipRole2) {
-              errors.push("Please select a role for IP in Preference 2.");
-            }
-
-            if (preference3 === "IP" && !ipRole3) {
-              errors.push("Please select a role for IP in Preference 3.");
-            }
-
-            if (errors.length) {
-              alert(errors.join("\n"));
-              return false;
-            }
-            return true;
-          }}
         />
       ),
     },
@@ -166,7 +183,7 @@ export default function CustomVerticalStepper() {
         return false;
       }
     } else if (activeStep === 1) {
-      const preferencesValid = steps[1].component.props.onValidate();
+      const preferencesValid = validatePreferences();
       if (!preferencesValid) return false;
     } else if (activeStep === 2) {
       if (!transactionId) {
