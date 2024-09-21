@@ -41,7 +41,7 @@ export default function PaymentStep({
         <input
           type="text"
           id="drive-link"
-          placeholder="Transaction Screenshot (Drive Link)"
+          placeholder="Payment Screenshot (Drive Link)"
           value={driveLink}
           onChange={(e) => setDriveLink(e.target.value)}
         />
