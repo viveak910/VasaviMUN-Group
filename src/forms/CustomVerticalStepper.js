@@ -30,6 +30,7 @@ export default function CustomVerticalStepper() {
   const [ipRole2, setIpRole2] = useState("");
   const [ipRole3, setIpRole3] = useState("");
   const [transactionId, setTransactionId] = useState("");
+  const [driveLink, setDriveLink] = useState("");
 
   const validatePreferences = () => {
     const errors = [];
@@ -165,6 +166,8 @@ export default function CustomVerticalStepper() {
           isVasavi={isVasavi}
           transactionId={transactionId}
           setTransactionId={setTransactionId}
+          driveLink={driveLink}
+          setDriveLink={setDriveLink}
         />
       ),
     },
@@ -183,11 +186,15 @@ export default function CustomVerticalStepper() {
         return false;
       }
     } else if (activeStep === 1) {
-      const preferencesValid = validatePreferences();
+      const preferencesValid = validatePreferences(); // Call the external validation function
       if (!preferencesValid) return false;
     } else if (activeStep === 2) {
       if (!transactionId) {
         alert("Transaction ID is required.");
+        return false;
+      }
+      if (!driveLink) {
+        alert("Drive link is required.");
         return false;
       }
     }
@@ -241,6 +248,7 @@ export default function CustomVerticalStepper() {
         ipRole2,
         ipRole3,
         transactionId,
+        driveLink,
       };
 
       console.log("Submitting form data:", formData);
@@ -290,6 +298,7 @@ export default function CustomVerticalStepper() {
     setIpRole2("");
     setIpRole3("");
     setTransactionId("");
+    setDriveLink("");
     setActiveStep(0);
   };
 
