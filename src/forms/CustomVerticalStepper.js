@@ -175,18 +175,73 @@ export default function CustomVerticalStepper() {
 
   const validateStep = () => {
     if (activeStep === 0) {
-      if (
-        !name ||
-        !phone ||
-        !email ||
-        !address ||
-        (isVasavi && (!rollNumber || !year || !branch || !section))
-      ) {
-        alert("Please fill all required fields in Personal Details.");
+      const phoneRegex = /^[0-9]{10}$/;
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      const rollNumberRegex =
+        /^[0-9]{4}-[0-9A-Za-z]{2}-[0-9A-Za-z]{3}-[0-9A-Za-z]{3}$/;
+
+      if (!name) {
+        alert("Please fill in your name.");
         return false;
       }
+
+      if (!phone) {
+        alert("Please fill in your phone number.");
+        return false;
+      }
+
+      if (!phoneRegex.test(phone)) {
+        alert("Phone number must be exactly 10 digits.");
+        return false;
+      }
+
+      if (!email) {
+        alert("Please fill in your email.");
+        return false;
+      }
+
+      if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      if (!address) {
+        alert("Please fill in your address.");
+        return false;
+      }
+
+      if (isVasavi) {
+        if (!rollNumber) {
+          alert("Please fill in your roll number.");
+          return false;
+        }
+
+        if (!rollNumberRegex.test(rollNumber)) {
+          alert("Roll number must be in the format 1602-2X-XXX-XXX.");
+          return false;
+        }
+
+        if (!year) {
+          alert("Please select your year.");
+          return false;
+        }
+
+        if (!branch) {
+          alert("Please select your branch.");
+          return false;
+        }
+
+        if (!section) {
+          alert("Please select your section.");
+          return false;
+        }
+      }
+
+      return true;
     } else if (activeStep === 1) {
-      const preferencesValid = validatePreferences(); // Call the external validation function
+      const preferencesValid = validatePreferences();
       if (!preferencesValid) return false;
     } else if (activeStep === 2) {
       if (!transactionId) {
