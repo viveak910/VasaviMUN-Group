@@ -20,12 +20,12 @@ export default function CustomVerticalStepper() {
   const [preference1, setPreference1] = useState("");
   const [preference2, setPreference2] = useState("");
   const [preference3, setPreference3] = useState("");
-  const [portfolio1Pref1, setportfolio1Pref1] = useState("");
-  const [portfolio2Pref1, setportfolio2Pref1] = useState("");
-  const [portfolio1Pref2, setportfolio1Pref2] = useState("");
-  const [portfolio2Pref2, setportfolio2Pref2] = useState("");
-  const [portfolio1Pref3, setportfolio1Pref3] = useState("");
-  const [portfolio2Pref3, setportfolio2Pref3] = useState("");
+  const [country1Pref1, setCountry1Pref1] = useState("");
+  const [country2Pref1, setCountry2Pref1] = useState("");
+  const [country1Pref2, setCountry1Pref2] = useState("");
+  const [country2Pref2, setCountry2Pref2] = useState("");
+  const [country1Pref3, setCountry1Pref3] = useState("");
+  const [country2Pref3, setCountry2Pref3] = useState("");
   const [ipRole1, setIpRole1] = useState("");
   const [ipRole2, setIpRole2] = useState("");
   const [ipRole3, setIpRole3] = useState("");
@@ -38,16 +38,16 @@ export default function CustomVerticalStepper() {
     if (preference1.trim().toLowerCase() !== "ip") {
       if (
         !preference1.trim() ||
-        !portfolio1Pref1.trim() ||
-        !portfolio2Pref1.trim()
+        !country1Pref1.trim() ||
+        !country2Pref1.trim()
       ) {
-        errors.push("Preference 1, portfolio 1, and portfolio 2 are required.");
+        errors.push("Preference 1, Country 1, and Country 2 are required.");
       } else if (
-        portfolio1Pref1.trim().toLowerCase() ===
-        portfolio2Pref1.trim().toLowerCase()
+        country1Pref1.trim().toLowerCase() ===
+        country2Pref1.trim().toLowerCase()
       ) {
         errors.push(
-          "For Preference 1, portfolio 1 and portfolio 2 must be different."
+          "For Preference 1, Country 1 and Country 2 must be different."
         );
       }
     }
@@ -55,16 +55,16 @@ export default function CustomVerticalStepper() {
     if (preference2.trim().toLowerCase() !== "ip") {
       if (
         !preference2.trim() ||
-        !portfolio1Pref2.trim() ||
-        !portfolio2Pref2.trim()
+        !country1Pref2.trim() ||
+        !country2Pref2.trim()
       ) {
-        errors.push("Preference 2, portfolio 1, and portfolio 2 are required.");
+        errors.push("Preference 2, Country 1, and Country 2 are required.");
       } else if (
-        portfolio1Pref2.trim().toLowerCase() ===
-        portfolio2Pref2.trim().toLowerCase()
+        country1Pref2.trim().toLowerCase() ===
+        country2Pref2.trim().toLowerCase()
       ) {
         errors.push(
-          "For Preference 2, portfolio 1 and portfolio 2 must be different."
+          "For Preference 2, Country 1 and Country 2 must be different."
         );
       }
     }
@@ -72,16 +72,16 @@ export default function CustomVerticalStepper() {
     if (preference3.trim().toLowerCase() !== "ip") {
       if (
         !preference3.trim() ||
-        !portfolio1Pref3.trim() ||
-        !portfolio2Pref3.trim()
+        !country1Pref3.trim() ||
+        !country2Pref3.trim()
       ) {
-        errors.push("Preference 3, portfolio 1, and portfolio 2 are required.");
+        errors.push("Preference 3, Country 1, and Country 2 are required.");
       } else if (
-        portfolio1Pref3.trim().toLowerCase() ===
-        portfolio2Pref3.trim().toLowerCase()
+        country1Pref3.trim().toLowerCase() ===
+        country2Pref3.trim().toLowerCase()
       ) {
         errors.push(
-          "For Preference 3, portfolio 1 and portfolio 2 must be different."
+          "For Preference 3, Country 1 and Country 2 must be different."
         );
       }
     }
@@ -139,18 +139,18 @@ export default function CustomVerticalStepper() {
           setPreference2={setPreference2}
           preference3={preference3}
           setPreference3={setPreference3}
-          portfolio1Pref1={portfolio1Pref1}
-          setportfolio1Pref1={setportfolio1Pref1}
-          portfolio2Pref1={portfolio2Pref1}
-          setportfolio2Pref1={setportfolio2Pref1}
-          portfolio1Pref2={portfolio1Pref2}
-          setportfolio1Pref2={setportfolio1Pref2}
-          portfolio2Pref2={portfolio2Pref2}
-          setportfolio2Pref2={setportfolio2Pref2}
-          portfolio1Pref3={portfolio1Pref3}
-          setportfolio1Pref3={setportfolio1Pref3}
-          portfolio2Pref3={portfolio2Pref3}
-          setportfolio2Pref3={setportfolio2Pref3}
+          country1Pref1={country1Pref1}
+          setCountry1Pref1={setCountry1Pref1}
+          country2Pref1={country2Pref1}
+          setCountry2Pref1={setCountry2Pref1}
+          country1Pref2={country1Pref2}
+          setCountry1Pref2={setCountry1Pref2}
+          country2Pref2={country2Pref2}
+          setCountry2Pref2={setCountry2Pref2}
+          country1Pref3={country1Pref3}
+          setCountry1Pref3={setCountry1Pref3}
+          country2Pref3={country2Pref3}
+          setCountry2Pref3={setCountry2Pref3}
           ipRole1={ipRole1}
           setIpRole1={setIpRole1}
           ipRole2={ipRole2}
@@ -252,7 +252,16 @@ export default function CustomVerticalStepper() {
         alert("Drive link is required.");
         return false;
       }
+
+      const driveUrlPattern =
+        /https:\/\/drive\.google\.com\/(?:file\/d\/|drive\/folders\/)([-\w]+)/;
+
+      if (!driveUrlPattern.test(driveLink)) {
+        alert("Please enter a valid Google Drive link.");
+        return false;
+      }
     }
+
     return true;
   };
 
@@ -293,12 +302,12 @@ export default function CustomVerticalStepper() {
         preference1,
         preference2,
         preference3,
-        portfolio1Pref1,
-        portfolio2Pref1,
-        portfolio1Pref2,
-        portfolio2Pref2,
-        portfolio1Pref3,
-        portfolio2Pref3,
+        country1Pref1,
+        country2Pref1,
+        country1Pref2,
+        country2Pref2,
+        country1Pref3,
+        country2Pref3,
         ipRole1,
         ipRole2,
         ipRole3,
@@ -343,12 +352,12 @@ export default function CustomVerticalStepper() {
     setPreference1("");
     setPreference2("");
     setPreference3("");
-    setportfolio1Pref1("");
-    setportfolio2Pref1("");
-    setportfolio1Pref2("");
-    setportfolio2Pref2("");
-    setportfolio1Pref3("");
-    setportfolio2Pref3("");
+    setCountry1Pref1("");
+    setCountry2Pref1("");
+    setCountry1Pref2("");
+    setCountry2Pref2("");
+    setCountry1Pref3("");
+    setCountry2Pref3("");
     setIpRole1("");
     setIpRole2("");
     setIpRole3("");

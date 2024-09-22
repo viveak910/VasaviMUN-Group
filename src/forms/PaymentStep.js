@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaRegCopy } from "react-icons/fa";
 import qrCode1 from "./QR1.jpeg";
 import qrCode2 from "./QR2.png";
@@ -17,24 +17,10 @@ export default function PaymentStep({
 
   const QR = isVasavi ? qrCode1 : qrCode2;
 
-  const [isValidDriveLink, setIsValidDriveLink] = useState(true);
-
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {
       alert("UPI ID copied to clipboard!");
     });
-  };
-
-  const validateDriveLink = (link) => {
-    const driveUrlPattern =
-      /https:\/\/drive\.google\.com\/(?:file\/d\/|drive\/folders\/)([-\w]+)/;
-    return driveUrlPattern.test(link);
-  };
-
-  const handleDriveLinkChange = (e) => {
-    const value = e.target.value;
-    setDriveLink(value);
-    setIsValidDriveLink(validateDriveLink(value));
   };
 
   return (
@@ -67,10 +53,7 @@ export default function PaymentStep({
           id="drive-link"
           placeholder="Payment Screenshot (Drive Link)"
           value={driveLink}
-          onChange={handleDriveLinkChange}
-          style={{
-            borderColor: isValidDriveLink ? "#ccc" : "red",
-          }}
+          onChange={(e) => setDriveLink(e.target.value)}
         />
         <p
           style={{
@@ -81,12 +64,6 @@ export default function PaymentStep({
         >
           Ensure the link is not restricted
         </p>
-        {!isValidDriveLink && (
-          <p style={{ color: "red" }}>
-            {" "}
-            Please enter a valid Google Drive link
-          </p>
-        )}
       </div>
 
       <div
