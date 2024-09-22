@@ -17,18 +17,18 @@ export default function PreferencesStep({
   setPreference2,
   preference3,
   setPreference3,
-  portfolio1Pref1,
-  setportfolio1Pref1,
-  portfolio2Pref1,
-  setportfolio2Pref1,
-  portfolio1Pref2,
-  setportfolio1Pref2,
-  portfolio2Pref2,
-  setportfolio2Pref2,
-  portfolio1Pref3,
-  setportfolio1Pref3,
-  portfolio2Pref3,
-  setportfolio2Pref3,
+  country1Pref1,
+  setCountry1Pref1,
+  country2Pref1,
+  setCountry2Pref1,
+  country1Pref2,
+  setCountry1Pref2,
+  country2Pref2,
+  setCountry2Pref2,
+  country1Pref3,
+  setCountry1Pref3,
+  country2Pref3,
+  setCountry2Pref3,
   ipRole1,
   setIpRole1,
   ipRole2,
@@ -44,7 +44,7 @@ export default function PreferencesStep({
   );
 
   const filteredCommittees3 =
-    ipCount === 2
+    ipCount === 4
       ? filteredCommittees2.filter((c) => c !== "IP")
       : filteredCommittees2.filter((c) => c !== preference2 || c === "IP");
 
@@ -94,19 +94,19 @@ export default function PreferencesStep({
       )}
 
       {preference1 && preference1 !== "IP" && (
-        <div className="Portfolios">
+        <div className="country-preferences">
           <input
             type="text"
-            placeholder="portfolio 1"
-            value={portfolio1Pref1}
-            onChange={(e) => setportfolio1Pref1(e.target.value)}
+            placeholder="Country 1"
+            value={country1Pref1}
+            onChange={(e) => setCountry1Pref1(e.target.value)}
             required
           />
           <input
             type="text"
-            placeholder="portfolio 2"
-            value={portfolio2Pref1}
-            onChange={(e) => setportfolio2Pref1(e.target.value)}
+            placeholder="Country 2"
+            value={country2Pref1}
+            onChange={(e) => setCountry2Pref1(e.target.value)}
             required
           />
         </div>
@@ -151,19 +151,19 @@ export default function PreferencesStep({
       )}
 
       {preference2 && preference2 !== "IP" && (
-        <div className="Portfolios">
+        <div className="country-preferences">
           <input
             type="text"
-            placeholder="portfolio 1"
-            value={portfolio1Pref2}
-            onChange={(e) => setportfolio1Pref2(e.target.value)}
+            placeholder="Country 1"
+            value={country1Pref2}
+            onChange={(e) => setCountry1Pref2(e.target.value)}
             required
           />
           <input
             type="text"
-            placeholder="portfolio 2"
-            value={portfolio2Pref2}
-            onChange={(e) => setportfolio2Pref2(e.target.value)}
+            placeholder="Country 2"
+            value={country2Pref2}
+            onChange={(e) => setCountry2Pref2(e.target.value)}
             required
           />
         </div>
@@ -208,19 +208,19 @@ export default function PreferencesStep({
       )}
 
       {preference3 && preference3 !== "IP" && (
-        <div className="Portfolios">
+        <div className="country-preferences">
           <input
             type="text"
-            placeholder="portfolio 1"
-            value={portfolio1Pref3}
-            onChange={(e) => setportfolio1Pref3(e.target.value)}
+            placeholder="Country 1"
+            value={country1Pref3}
+            onChange={(e) => setCountry1Pref3(e.target.value)}
             required
           />
           <input
             type="text"
-            placeholder="portfolio 2"
-            value={portfolio2Pref3}
-            onChange={(e) => setportfolio2Pref3(e.target.value)}
+            placeholder="Country 2"
+            value={country2Pref3}
+            onChange={(e) => setCountry2Pref3(e.target.value)}
             required
           />
         </div>
