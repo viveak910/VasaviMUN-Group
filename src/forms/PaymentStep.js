@@ -62,7 +62,7 @@ export default function PaymentStep({
             color: "#fff",
           }}
         >
-          Ensure the link is not restricted
+          Ensure access is not restricted
         </p>
       </div>
 
