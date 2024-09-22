@@ -57,6 +57,30 @@ export default function PreferencesStep({
         <label className="btn">
           <h3>Committee Preference</h3>
         </label>
+        <a
+          href="https://docs.google.com/spreadsheets/d/10-hKlo3oR5dMq0zpd2tCOk11WGoudPvfCI3EauPGVFs/edit?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            textDecoration: "none",
+          }}
+        >
+          <p
+            style={{
+              padding: "8px",
+              borderRadius: "8px",
+              marginRight: "10px",
+              backgroundColor: "black",
+              color: "white",
+              fontSize: "1rem",
+              fontWeight: "bold",
+              display: "inline-block",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Country Matrices -&gt;
+          </p>
+        </a>
       </div>
 
       {/* Preference 1 */}
