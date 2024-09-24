@@ -51,6 +51,27 @@ export default function PreferencesStep({
   const filteredIpRoles2 = ipRoles.filter((role) => role !== ipRole1);
   const filteredIpRoles3 = filteredIpRoles2.filter((role) => role !== ipRole2);
 
+  const handlePreference1Change = (value) => {
+    setPreference1(value);
+    setportfolio1Pref1("");
+    setportfolio2Pref1("");
+    setIpRole1("");
+  };
+
+  const handlePreference2Change = (value) => {
+    setPreference2(value);
+    setportfolio1Pref2("");
+    setportfolio2Pref2("");
+    setIpRole2("");
+  };
+
+  const handlePreference3Change = (value) => {
+    setPreference3(value);
+    setportfolio1Pref3("");
+    setportfolio2Pref3("");
+    setIpRole3("");
+  };
+
   return (
     <div>
       <div className="hd">
@@ -87,7 +108,7 @@ export default function PreferencesStep({
       <h4>Preference 1</h4>
       <select
         value={preference1}
-        onChange={(e) => setPreference1(e.target.value)}
+        onChange={(e) => handlePreference1Change(e.target.value)}
         required
       >
         <option value="">Select Preference 1</option>
@@ -143,7 +164,7 @@ export default function PreferencesStep({
       <h4>Preference 2</h4>
       <select
         value={preference2}
-        onChange={(e) => setPreference2(e.target.value)}
+        onChange={(e) => handlePreference2Change(e.target.value)}
         required
         disabled={!preference1}
       >
@@ -200,7 +221,7 @@ export default function PreferencesStep({
       <h4>Preference 3</h4>
       <select
         value={preference3}
-        onChange={(e) => setPreference3(e.target.value)}
+        onChange={(e) => handlePreference3Change(e.target.value)}
         required
         disabled={!preference2}
       >
