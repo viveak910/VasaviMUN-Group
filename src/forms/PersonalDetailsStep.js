@@ -22,6 +22,8 @@ export default function PersonalDetailsStep({
   setSection,
   munExperienceDetails,
   setMunExperienceDetails,
+  instituteName,
+  setInstituteName,
 }) {
   return (
     <div>
@@ -46,6 +48,15 @@ export default function PersonalDetailsStep({
         onChange={(e) => setEmail(e.target.value)}
         required
       />
+      {!isVasavi && (
+        <input
+          type="text"
+          placeholder="Institute Name"
+          value={instituteName}
+          onChange={(e) => setInstituteName(e.target.value)}
+          required
+        />
+      )}
       <input
         type="text"
         placeholder="Address"
@@ -69,7 +80,10 @@ export default function PersonalDetailsStep({
           type="radio"
           value="vasavi"
           checked={isVasavi}
-          onChange={() => setIsVasavi(true)}
+          onChange={() => {
+            setIsVasavi(true);
+            setInstituteName("Vasavi College of Engineering");
+          }}
         />
         <label htmlFor="vasavi" className={`btn ${isVasavi ? "selected" : ""}`}>
           Vasavi College
@@ -81,7 +95,10 @@ export default function PersonalDetailsStep({
           type="radio"
           value="external"
           checked={!isVasavi}
-          onChange={() => setIsVasavi(false)}
+          onChange={() => {
+            setIsVasavi(false);
+            setInstituteName("");
+          }}
         />
         <label
           htmlFor="external"

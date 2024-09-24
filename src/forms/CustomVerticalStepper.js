@@ -31,6 +31,8 @@ export default function CustomVerticalStepper() {
   const [ipRole3, setIpRole3] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [driveLink, setDriveLink] = useState("");
+  const [instituteName, setInstituteName] = useState("");
+  const [munExperienceDetails, setMunExperienceDetails] = useState("");
 
   const validatePreferences = () => {
     const errors = [];
@@ -127,6 +129,10 @@ export default function CustomVerticalStepper() {
           setBranch={setBranch}
           section={section}
           setSection={setSection}
+          instituteName={instituteName}
+          setInstituteName={setInstituteName}
+          munExperienceDetails={munExperienceDetails}
+          setMunExperienceDetails={setMunExperienceDetails}
         />
       ),
     },
@@ -201,6 +207,10 @@ export default function CustomVerticalStepper() {
         alert("Please fill in your email.");
         return false;
       }
+      if (!instituteName) {
+        alert("Enter your institute name");
+        return false;
+      }
 
       if (!emailRegex.test(email)) {
         alert("Please enter a valid email address.");
@@ -210,6 +220,8 @@ export default function CustomVerticalStepper() {
       if (!address) {
         alert("Please fill in your address.");
         return false;
+      }
+      if (!instituteName) {
       }
 
       if (isVasavi) {
@@ -294,7 +306,8 @@ export default function CustomVerticalStepper() {
         phone,
         email,
         address,
-        isVasavi,
+        instituteName,
+        munExperienceDetails,
         rollNumber,
         year,
         branch,
@@ -343,6 +356,8 @@ export default function CustomVerticalStepper() {
     setName("");
     setPhone("");
     setEmail("");
+    setMunExperienceDetails("");
+    setInstituteName("");
     setAddress("");
     setIsVasavi(false);
     setRollNumber("");
