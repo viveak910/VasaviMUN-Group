@@ -2,7 +2,6 @@ import React from "react";
 import { FaRegCopy } from "react-icons/fa";
 import qrCode1 from "./QR1.jpeg";
 import qrCode2 from "./QR2.png";
-//sdf
 export default function PaymentStep({
   isVasavi,
   transactionId,
