@@ -144,6 +144,7 @@ export default function CustomVerticalStepper() {
           setTransactionId={setTransactionId}
           driveLink={driveLink}
           setDriveLink={setDriveLink}
+          participantsCount={participantsCount}
         />
       ),
     },

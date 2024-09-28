@@ -9,12 +9,11 @@ export default function PaymentStep({
   setTransactionId,
   driveLink,
   setDriveLink,
+  participantsCount,
 }) {
+  const baseFee = isVasavi ? 1000 : 1400;
+  const totalFee = baseFee * participantsCount;
   const upiID = isVasavi ? "7396588789@hdfcbank" : "8309502651@ibl";
-  const paymentLink = isVasavi
-    ? "https://example.com/pay/1000"
-    : "https://example.com/pay/1400";
-
   const QR = isVasavi ? qrCode1 : qrCode2;
 
   const copyToClipboard = (text) => {
@@ -25,15 +24,10 @@ export default function PaymentStep({
 
   return (
     <div>
-      <h2>
-        {isVasavi
-          ? "Pay the registration fee of ₹1000"
-          : "Pay the registration fee of ₹1400"}
-      </h2>
+      <h2>Pay the registration fee of ₹{totalFee}</h2>
       <div className="hd">
         <label className="btn">
           <a
-            href={paymentLink}
             target="_blank"
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
