@@ -17,93 +17,83 @@ export default function CustomVerticalStepper() {
   const [year, setYear] = useState("");
   const [branch, setBranch] = useState("");
   const [section, setSection] = useState("");
-  const [preference1, setPreference1] = useState("");
-  const [preference2, setPreference2] = useState("");
-  const [preference3, setPreference3] = useState("");
-  const [portfolio1Pref1, setportfolio1Pref1] = useState("");
-  const [portfolio2Pref1, setportfolio2Pref1] = useState("");
-  const [portfolio1Pref2, setportfolio1Pref2] = useState("");
-  const [portfolio2Pref2, setportfolio2Pref2] = useState("");
-  const [portfolio1Pref3, setportfolio1Pref3] = useState("");
-  const [portfolio2Pref3, setportfolio2Pref3] = useState("");
-  const [ipRole1, setIpRole1] = useState("");
-  const [ipRole2, setIpRole2] = useState("");
-  const [ipRole3, setIpRole3] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const [driveLink, setDriveLink] = useState("");
   const [instituteName, setInstituteName] = useState("");
   const [munExperienceDetails, setMunExperienceDetails] = useState("");
+  const [participantsCount, setParticipantsCount] = useState(8);
+  const [participants, setParticipants] = useState(
+    Array.from({ length: participantsCount }, () => ({
+      name: "",
+      phone: "",
+      email: "",
+      preference: "",
+      portfolio1: "",
+      portfolio2: "",
+      ipRole: "",
+    }))
+  );
 
   const validatePreferences = () => {
     const errors = [];
+    const selectedCommittees = new Set();
 
-    if (preference1.trim().toLowerCase() !== "ip") {
-      if (
-        !preference1.trim() ||
-        !portfolio1Pref1.trim() ||
-        !portfolio2Pref1.trim()
-      ) {
-        errors.push("Preference 1, portfolio 1, and portfolio 2 are required.");
-      } else if (
-        portfolio1Pref1.trim().toLowerCase() ===
-        portfolio2Pref1.trim().toLowerCase()
-      ) {
+    participants.forEach((participant, index) => {
+      if (!participant.name.trim()) {
+        errors.push(`Participant ${index + 1}: Name is required.`);
+      }
+
+      if (!participant.preference) {
+        errors.push(`Participant ${index + 1}: Preference is required.`);
+      } else {
+        selectedCommittees.add(participant.preference);
+
+        if (participant.preference !== "IP") {
+          if (
+            !participant.portfolio1.trim() ||
+            !participant.portfolio2.trim()
+          ) {
+            errors.push(
+              `Participant ${
+                index + 1
+              }: Both portfolio 1 and 2 are required for preference ${
+                participant.preference
+              }.`
+            );
+          } else if (
+            participant.portfolio1.trim().toLowerCase() ===
+            participant.portfolio2.trim().toLowerCase()
+          ) {
+            errors.push(
+              `Participant ${
+                index + 1
+              }: Portfolio 1 and Portfolio 2 must be different for preference ${
+                participant.preference
+              }.`
+            );
+          }
+        }
+
+        if (participant.preference === "IP" && !participant.ipRole) {
+          errors.push(`Participant ${index + 1}: Please select a role for IP.`);
+        }
+      }
+    });
+
+    const committees = ["DISEC", "AIPPM", "UNODC", "UNHRC", "CCC", "IP"];
+    committees.forEach((committee) => {
+      if (!selectedCommittees.has(committee)) {
         errors.push(
-          "For Preference 1, portfolio 1 and portfolio 2 must be different."
+          `At least one participant must select the preference "${committee}".`
         );
       }
-    }
-
-    if (preference2.trim().toLowerCase() !== "ip") {
-      if (
-        !preference2.trim() ||
-        !portfolio1Pref2.trim() ||
-        !portfolio2Pref2.trim()
-      ) {
-        errors.push("Preference 2, portfolio 1, and portfolio 2 are required.");
-      } else if (
-        portfolio1Pref2.trim().toLowerCase() ===
-        portfolio2Pref2.trim().toLowerCase()
-      ) {
-        errors.push(
-          "For Preference 2, portfolio 1 and portfolio 2 must be different."
-        );
-      }
-    }
-
-    if (preference3.trim().toLowerCase() !== "ip") {
-      if (
-        !preference3.trim() ||
-        !portfolio1Pref3.trim() ||
-        !portfolio2Pref3.trim()
-      ) {
-        errors.push("Preference 3, portfolio 1, and portfolio 2 are required.");
-      } else if (
-        portfolio1Pref3.trim().toLowerCase() ===
-        portfolio2Pref3.trim().toLowerCase()
-      ) {
-        errors.push(
-          "For Preference 3, portfolio 1 and portfolio 2 must be different."
-        );
-      }
-    }
-
-    if (preference1.trim().toLowerCase() === "ip" && !ipRole1.trim()) {
-      errors.push("Please select a role for IP in Preference 1.");
-    }
-
-    if (preference2.trim().toLowerCase() === "ip" && !ipRole2.trim()) {
-      errors.push("Please select a role for IP in Preference 2.");
-    }
-
-    if (preference3.trim().toLowerCase() === "ip" && !ipRole3.trim()) {
-      errors.push("Please select a role for IP in Preference 3.");
-    }
+    });
 
     if (errors.length > 0) {
       alert(errors.join("\n"));
       return false;
     }
+
     return true;
   };
 
@@ -139,30 +129,10 @@ export default function CustomVerticalStepper() {
     {
       component: (
         <PreferencesStep
-          preference1={preference1}
-          setPreference1={setPreference1}
-          preference2={preference2}
-          setPreference2={setPreference2}
-          preference3={preference3}
-          setPreference3={setPreference3}
-          portfolio1Pref1={portfolio1Pref1}
-          setportfolio1Pref1={setportfolio1Pref1}
-          portfolio2Pref1={portfolio2Pref1}
-          setportfolio2Pref1={setportfolio2Pref1}
-          portfolio1Pref2={portfolio1Pref2}
-          setportfolio1Pref2={setportfolio1Pref2}
-          portfolio2Pref2={portfolio2Pref2}
-          setportfolio2Pref2={setportfolio2Pref2}
-          portfolio1Pref3={portfolio1Pref3}
-          setportfolio1Pref3={setportfolio1Pref3}
-          portfolio2Pref3={portfolio2Pref3}
-          setportfolio2Pref3={setportfolio2Pref3}
-          ipRole1={ipRole1}
-          setIpRole1={setIpRole1}
-          ipRole2={ipRole2}
-          setIpRole2={setIpRole2}
-          ipRole3={ipRole3}
-          setIpRole3={setIpRole3}
+          participantsCount={participantsCount}
+          setParticipantsCount={setParticipantsCount}
+          participants={participants}
+          setParticipants={setParticipants}
         />
       ),
     },
@@ -312,25 +282,14 @@ export default function CustomVerticalStepper() {
         year,
         branch,
         section,
-        preference1,
-        preference2,
-        preference3,
-        portfolio1Pref1,
-        portfolio2Pref1,
-        portfolio1Pref2,
-        portfolio2Pref2,
-        portfolio1Pref3,
-        portfolio2Pref3,
-        ipRole1,
-        ipRole2,
-        ipRole3,
+        participants,
         transactionId,
         driveLink,
       };
 
       console.log("Submitting form data:", formData);
 
-      fetch("https://mun-registration.vercel.app/register", {
+      fetch("https://mun-registration.vercel.app/groupregister", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -364,21 +323,21 @@ export default function CustomVerticalStepper() {
     setYear("");
     setBranch("");
     setSection("");
-    setPreference1("");
-    setPreference2("");
-    setPreference3("");
-    setportfolio1Pref1("");
-    setportfolio2Pref1("");
-    setportfolio1Pref2("");
-    setportfolio2Pref2("");
-    setportfolio1Pref3("");
-    setportfolio2Pref3("");
-    setIpRole1("");
-    setIpRole2("");
-    setIpRole3("");
     setTransactionId("");
     setDriveLink("");
     setActiveStep(0);
+    setParticipantsCount(8);
+    setParticipants(
+      Array.from({ length: participantsCount }, () => ({
+        name: "",
+        phone: "",
+        email: "",
+        preference: "",
+        portfolio1: "",
+        portfolio2: "",
+        ipRole: "",
+      }))
+    );
   };
 
   return (
