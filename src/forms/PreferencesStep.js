@@ -18,7 +18,7 @@ export default function PreferencesStep({
   setParticipants,
 }) {
   const handleParticipantsCountChange = (e) => {
-    const count = Math.min(Math.max(e.target.value, 8), 12);
+    const count = parseInt(e.target.value, 10);
     setParticipantsCount(count);
     setParticipants(
       Array.from(
@@ -40,14 +40,13 @@ export default function PreferencesStep({
   const handleInputChange = (index, field, value) => {
     const updatedParticipants = [...participants];
 
-    // If the preference is being changed to "IP", reset the portfolio fields
     if (field === "preference" && value === "IP") {
       updatedParticipants[index] = {
         ...updatedParticipants[index],
         preference: value,
-        portfolio1: "", // Reset portfolio1
-        portfolio2: "", // Reset portfolio2
-        ipRole: "", // Clear the IP role as well
+        portfolio1: "",
+        portfolio2: "",
+        ipRole: "",
       };
     } else {
       updatedParticipants[index][field] = value;
@@ -90,13 +89,16 @@ export default function PreferencesStep({
 
       <label>
         <h3>Number of Participants</h3>
-        <input
-          type="number"
+        <select
           value={participantsCount}
           onChange={handleParticipantsCountChange}
-          min="8"
-          max="12"
-        />
+        >
+          {[...Array(8).keys()].map((_, i) => (
+            <option key={i} value={i + 8}>
+              {i + 8}
+            </option>
+          ))}
+        </select>
       </label>
 
       <form>
