@@ -23,6 +23,7 @@ export default function CustomVerticalStepper() {
   const [munExperienceDetails, setMunExperienceDetails] = useState("");
   const [participantsCount, setParticipantsCount] = useState(8);
   const [amount, setAmount] = useState("");
+  const [teamName, setTeamName] = useState("");
   const [participants, setParticipants] = useState(
     Array.from({ length: participantsCount }, () => ({
       name: "",
@@ -124,6 +125,8 @@ export default function CustomVerticalStepper() {
           setInstituteName={setInstituteName}
           munExperienceDetails={munExperienceDetails}
           setMunExperienceDetails={setMunExperienceDetails}
+          teamName={teamName}
+          setTeamName={setTeamName}
         />
       ),
     },
@@ -169,6 +172,10 @@ export default function CustomVerticalStepper() {
 
       if (!phone) {
         alert("Please fill in your phone number.");
+        return false;
+      }
+      if (!teamName) {
+        alert("Please enter Group delegation name");
         return false;
       }
 
@@ -279,6 +286,7 @@ export default function CustomVerticalStepper() {
         name,
         phone,
         email,
+        teamName,
         address,
         instituteName,
         munExperienceDetails,
@@ -321,6 +329,7 @@ export default function CustomVerticalStepper() {
     setPhone("");
     setEmail("");
     setMunExperienceDetails("");
+    setTeamName("");
     setInstituteName("");
     setAddress("");
     setIsVasavi(false);

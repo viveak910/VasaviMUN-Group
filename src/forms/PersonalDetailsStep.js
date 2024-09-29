@@ -24,6 +24,8 @@ export default function PersonalDetailsStep({
   setMunExperienceDetails,
   instituteName,
   setInstituteName,
+  teamName,
+  setTeamName,
 }) {
   return (
     <div>
@@ -46,6 +48,13 @@ export default function PersonalDetailsStep({
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Group delegation name"
+        value={teamName}
+        onChange={(e) => setTeamName(e.target.value)}
         required
       />
       {!isVasavi && (
