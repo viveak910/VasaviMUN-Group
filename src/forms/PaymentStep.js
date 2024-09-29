@@ -1,7 +1,7 @@
 import React from "react";
 import { FaRegCopy } from "react-icons/fa";
-import qrCode1 from "./QR1.jpeg";
-import qrCode2 from "./QR2.png";
+import qrCode1 from "./QR1.png";
+//import qrCode2 from "./QR2.png";
 export default function PaymentStep({
   isVasavi,
   transactionId,
@@ -9,12 +9,14 @@ export default function PaymentStep({
   driveLink,
   setDriveLink,
   participantsCount,
+  amount,
+  setAmount,
 }) {
-  const baseFee = isVasavi ? 1000 : 1400;
+  const baseFee = isVasavi ? 900 : 1300;
   const totalFee = baseFee * participantsCount;
-  const upiID = isVasavi ? "7396588789@hdfcbank" : "8309502651@ibl";
-  const QR = isVasavi ? qrCode1 : qrCode2;
-
+  const upiID = isVasavi ? "aripakamanoj03@okicici" : "aripakamanoj03@okicici";
+  const QR = isVasavi ? qrCode1 : qrCode1;
+  setAmount(totalFee);
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {
       alert("UPI ID copied to clipboard!");
@@ -26,13 +28,7 @@ export default function PaymentStep({
       <h2>Pay the registration fee of ₹{totalFee}</h2>
       <div className="hd">
         <label className="btn">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ textDecoration: "none" }}
-          >
-            <h3>Payment</h3>
-          </a>
+          <h3>Payment</h3>
         </label>
         <input
           type="text"
@@ -87,7 +83,7 @@ export default function PaymentStep({
           style={{
             cursor: "pointer",
             fontSize: "1.5rem",
-            color: "#fff", // White icon color
+            color: "#fff",
           }}
         />
       </div>

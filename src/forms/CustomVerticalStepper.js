@@ -22,6 +22,7 @@ export default function CustomVerticalStepper() {
   const [instituteName, setInstituteName] = useState("");
   const [munExperienceDetails, setMunExperienceDetails] = useState("");
   const [participantsCount, setParticipantsCount] = useState(8);
+  const [amount, setAmount] = useState("");
   const [participants, setParticipants] = useState(
     Array.from({ length: participantsCount }, () => ({
       name: "",
@@ -145,6 +146,8 @@ export default function CustomVerticalStepper() {
           driveLink={driveLink}
           setDriveLink={setDriveLink}
           participantsCount={participantsCount}
+          amount={amount}
+          setAmount={setAmount}
         />
       ),
     },
@@ -284,6 +287,7 @@ export default function CustomVerticalStepper() {
         branch,
         section,
         participants,
+        amount,
         transactionId,
         driveLink,
       };
@@ -328,11 +332,10 @@ export default function CustomVerticalStepper() {
     setDriveLink("");
     setActiveStep(0);
     setParticipantsCount(8);
+    setAmount("");
     setParticipants(
       Array.from({ length: participantsCount }, () => ({
         name: "",
-        phone: "",
-        email: "",
         preference: "",
         portfolio1: "",
         portfolio2: "",

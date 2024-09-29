@@ -26,8 +26,6 @@ export default function PreferencesStep({
         (_, i) =>
           participants[i] || {
             name: "",
-            phone: "",
-            email: "",
             preference: "",
             portfolio1: "",
             portfolio2: "",
@@ -40,7 +38,7 @@ export default function PreferencesStep({
   const handleInputChange = (index, field, value) => {
     const updatedParticipants = [...participants];
 
-    if (field === "preference" && value === "IP") {
+    if (field === "preference") {
       updatedParticipants[index] = {
         ...updatedParticipants[index],
         preference: value,
@@ -93,7 +91,7 @@ export default function PreferencesStep({
           value={participantsCount}
           onChange={handleParticipantsCountChange}
         >
-          {[...Array(8).keys()].map((_, i) => (
+          {[...Array(11).keys()].map((_, i) => (
             <option key={i} value={i + 8}>
               {i + 8}
             </option>
@@ -129,7 +127,6 @@ export default function PreferencesStep({
               Participant {index + 1}
             </h2>
 
-            {/* Name, Phone, and Email */}
             <input
               type="text"
               placeholder="Name"
@@ -138,27 +135,6 @@ export default function PreferencesStep({
               required
             />
 
-            <input
-              type="text"
-              placeholder="Phone Number"
-              value={participant.phone}
-              onChange={(e) =>
-                handleInputChange(index, "phone", e.target.value)
-              }
-              required
-            />
-
-            <input
-              type="email"
-              placeholder="Email"
-              value={participant.email}
-              onChange={(e) =>
-                handleInputChange(index, "email", e.target.value)
-              }
-              required
-            />
-
-            {/* Preferences */}
             <h4>Preference</h4>
             <select
               value={participant.preference}
