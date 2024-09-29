@@ -172,7 +172,7 @@ export default function PreferencesStep({
               <>
                 <input
                   type="text"
-                  placeholder="Portfolio 1"
+                  placeholder="Portfolio / Country - 1"
                   value={participant.portfolio1}
                   onChange={(e) =>
                     handleInputChange(index, "portfolio1", e.target.value)
@@ -181,7 +181,7 @@ export default function PreferencesStep({
                 />
                 <input
                   type="text"
-                  placeholder="Portfolio 2"
+                  placeholder="Portfolio / Country - 2"
                   value={participant.portfolio2}
                   onChange={(e) =>
                     handleInputChange(index, "portfolio2", e.target.value)
