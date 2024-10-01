@@ -91,7 +91,7 @@ export default function PreferencesStep({
           value={participantsCount}
           onChange={handleParticipantsCountChange}
         >
-          {[...Array(11).keys()].map((_, i) => (
+          {[...Array(8).keys()].map((_, i) => (
             <option key={i} value={i + 8}>
               {i + 8}
             </option>
