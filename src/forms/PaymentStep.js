@@ -1,6 +1,6 @@
 import React from "react";
 import { FaRegCopy } from "react-icons/fa";
-import qrCode1 from "./QR1.png";
+import qrCode1 from "./AnanyaQR.png";
 //import qrCode2 from "./QR2.png";
 export default function PaymentStep({
   isVasavi,
@@ -14,7 +14,9 @@ export default function PaymentStep({
 }) {
   const baseFee = isVasavi ? 900 : 1300;
   const totalFee = baseFee * participantsCount;
-  const upiID = isVasavi ? "aripakamanoj03@okicici" : "aripakamanoj03@okicici";
+  const upiID = isVasavi
+    ? "saiananyat-1@okhdfcbank"
+    : "saiananyat-1@okhdfcbank";
   const QR = isVasavi ? qrCode1 : qrCode1;
   setAmount(totalFee);
   const copyToClipboard = (text) => {
