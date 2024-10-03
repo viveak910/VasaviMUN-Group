@@ -14,9 +14,7 @@ export default function PaymentStep({
 }) {
   const baseFee = isVasavi ? 900 : 1300;
   const totalFee = baseFee * participantsCount;
-  const upiID = isVasavi
-    ? "saiananyat-1@okhdfcbank"
-    : "saiananyat-1@okhdfcbank";
+  const upiID = isVasavi ? "8919961230" : "8919961230";
   const QR = isVasavi ? qrCode1 : qrCode1;
   setAmount(totalFee);
   const copyToClipboard = (text) => {
