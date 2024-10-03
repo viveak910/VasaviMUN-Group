@@ -76,7 +76,7 @@ export default function PaymentStep({
             whiteSpace: "nowrap",
           }}
         >
-          {upiID} {/* Display the UPI ID */}
+          UPI : {upiID} {/* Display the UPI ID */}
         </p>
         <FaRegCopy
           onClick={() => copyToClipboard(upiID)}
@@ -88,7 +88,7 @@ export default function PaymentStep({
         />
       </div>
 
-      <div
+      {/* <div
         style={{
           display: "flex",
           justifyContent: "center",
@@ -114,7 +114,7 @@ export default function PaymentStep({
             }}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
