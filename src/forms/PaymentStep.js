@@ -12,7 +12,7 @@ export default function PaymentStep({
   amount,
   setAmount,
 }) {
-  const baseFee = isVasavi ? 900 : 1300;
+  const baseFee = isVasavi ? 1200 : 1600;
   const totalFee = baseFee * participantsCount;
   const upiID = isVasavi ? "8919961230" : "8919961230";
   const QR = isVasavi ? qrCode1 : qrCode1;
