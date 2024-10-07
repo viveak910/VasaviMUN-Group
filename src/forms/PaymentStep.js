@@ -1,6 +1,6 @@
 import React from "react";
 import { FaRegCopy } from "react-icons/fa";
-import qrCode1 from "./AnanyaQR.png";
+//import qrCode1 from "./AnanyaQR.png";
 //import qrCode2 from "./QR2.png";
 export default function PaymentStep({
   isVasavi,
@@ -14,8 +14,9 @@ export default function PaymentStep({
 }) {
   const baseFee = isVasavi ? 1200 : 1600;
   const totalFee = baseFee * participantsCount;
-  const upiID = isVasavi ? "8919961230" : "8919961230";
-  const QR = isVasavi ? qrCode1 : qrCode1;
+  const upiID = isVasavi ? "aripakamanoj03@okicici" : "aripakamanoj03@okicici";
+  const no = isVasavi ? "8919961230" : "8919961230";
+  //const QR = isVasavi ? qrCode1 : qrCode1;
   setAmount(totalFee);
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -61,31 +62,49 @@ export default function PaymentStep({
           alignItems: "center",
           justifyContent: "center",
           marginTop: "15px",
+          flexDirection: "column",
         }}
       >
-        <p
+        <div
           style={{
-            padding: "8px",
-            borderRadius: "8px",
-            marginRight: "10px",
-            backgroundColor: "black",
-            color: "white",
-            fontSize: "1rem",
-            fontWeight: "bold",
-            display: "inline-block",
-            whiteSpace: "nowrap",
+            display: "flex",
+            alignItems: "center",
           }}
         >
-          UPI : {upiID} {/* Display the UPI ID */}
-        </p>
-        <FaRegCopy
-          onClick={() => copyToClipboard(upiID)}
+          <p
+            style={{
+              padding: "8px",
+              borderRadius: "8px",
+              marginRight: "10px",
+              backgroundColor: "black",
+              color: "white",
+              fontSize: "1rem",
+              fontWeight: "bold",
+              display: "inline-block",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {upiID}
+          </p>
+          <FaRegCopy
+            onClick={() => copyToClipboard(upiID)}
+            style={{
+              cursor: "pointer",
+              fontSize: "1.5rem",
+              color: "#fff",
+            }}
+          />
+        </div>
+        <h5
           style={{
-            cursor: "pointer",
-            fontSize: "1.5rem",
+            marginTop: "10px",
+            textAlign: "center",
+            fontSize: "1.2rem",
             color: "#fff",
           }}
-        />
+        >
+          For payment issues, contact: {no}
+        </h5>
       </div>
 
       {/* <div
