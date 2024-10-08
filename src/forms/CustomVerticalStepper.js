@@ -220,7 +220,10 @@ export default function CustomVerticalStepper() {
           alert("Please select your year.");
           return false;
         }
-
+        if (!munExperienceDetails) {
+          alert("Fill in MUN Experience");
+          return false;
+        }
         if (!branch) {
           alert("Please select your branch.");
           return false;
