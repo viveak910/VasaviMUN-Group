@@ -11,6 +11,8 @@ export default function PaymentStep({
   participantsCount,
   amount,
   setAmount,
+  utr,
+  setUtr,
 }) {
   const baseFee = isVasavi ? 1200 : 1600;
   const totalFee = baseFee * participantsCount;
@@ -44,6 +46,13 @@ export default function PaymentStep({
           placeholder="Payment Screenshot (Drive Link)"
           value={driveLink}
           onChange={(e) => setDriveLink(e.target.value)}
+        />
+        <input
+          type="text"
+          id="utr-input"
+          placeholder="Enter UTR number"
+          value={utr}
+          onChange={(e) => setUtr(e.target.value)}
         />
         <p
           style={{

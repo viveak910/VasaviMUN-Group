@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import PersonalDetailsStep from "./PersonalDetailsStep";
 import PreferencesStep from "./PreferencesStep";
 import PaymentStep from "./PaymentStep";
@@ -35,6 +36,7 @@ export default function CustomVerticalStepper() {
       ipRole: "",
     }))
   );
+  const [utr, setUtr] = useState(""); 
 
   const validatePreferences = () => {
     const errors = [];
@@ -151,6 +153,8 @@ export default function CustomVerticalStepper() {
           participantsCount={participantsCount}
           amount={amount}
           setAmount={setAmount}
+          utr={utr}
+          setUtr={setUtr}
         />
       ),
     },
@@ -256,6 +260,11 @@ export default function CustomVerticalStepper() {
         alert("Please enter a valid Google Drive link.");
         return false;
       }
+      const utrvadilation =  /^\d{10}(K)?$/;
+      if(!utrvadilation.test(utr)){
+        alert("Please enter a valid UTR number");
+        return false;
+      }
     }
 
     return true;
@@ -301,11 +310,12 @@ export default function CustomVerticalStepper() {
         amount,
         transactionId,
         driveLink,
+        utr,
       };
 
       console.log("Submitting form data:", formData);
 
-      fetch("https://mun-registration.vercel.app/groupregister", {
+      fetch("https://mun-dat.onrender.com/groupregister", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
