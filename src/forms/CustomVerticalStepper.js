@@ -84,7 +84,7 @@ export default function CustomVerticalStepper() {
       }
     });
 
-    const committees = ["DISEC", "AIPPM", "UNODC", "UNHRC", "CCC", "IP"];
+    const committees = ["DISEC", "AIPPM", "UNCSW","WHO", "IP"];
     committees.forEach((committee) => {
       if (!selectedCommittees.has(committee)) {
         errors.push(
