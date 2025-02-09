@@ -60,7 +60,7 @@ export default function PreferencesStep({
           <h3>Committee Preference</h3>
         </label>
         <a
-          href="https://docs.google.com/spreadsheets/d/10-hKlo3oR5dMq0zpd2tCOk11WGoudPvfCI3EauPGVFs/edit?usp=sharing"
+          href="https://docs.google.com/spreadsheets/d/1aHaViFRhta206z6MnRgMNkTvMsh_7UvUDxbC16DdMrI/edit?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           style={{
