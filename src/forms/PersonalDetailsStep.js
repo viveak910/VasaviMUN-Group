@@ -1,6 +1,5 @@
 import React from "react";
 import "./form.css";
-import { useEffect } from "react";
 
 export default function PersonalDetailsStep({
   name,
@@ -28,22 +27,6 @@ export default function PersonalDetailsStep({
   teamName,
   setTeamName,
 }) {
-  useEffect(() => {
-    const fetchUpiData = async () => {
-      try {
-        const response = await fetch("https://mun-dat.onrender.com/upi/available", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchUpiData();
-  }, []);
-
   return (
     <div>
       <input

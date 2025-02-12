@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+
 import PersonalDetailsStep from "./PersonalDetailsStep";
 import PreferencesStep from "./PreferencesStep";
 import PaymentStep from "./PaymentStep";
@@ -260,11 +260,7 @@ export default function CustomVerticalStepper() {
         alert("Please enter a valid Google Drive link.");
         return false;
       }
-      const utrvadilation =  /^\d{10}(K)?$/;
-      if(!utrvadilation.test(utr)){
-        alert("Please enter a valid UTR number");
-        return false;
-      }
+     
     }
 
     return true;
