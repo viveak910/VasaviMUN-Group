@@ -256,10 +256,7 @@ export default function CustomVerticalStepper() {
       const driveUrlPattern =
         /https:\/\/drive\.google\.com\/(?:file\/d\/|drive\/folders\/)([-\w]+)/;
 
-      if (!driveUrlPattern.test(driveLink)) {
-        alert("Please enter a valid Google Drive link.");
-        return false;
-      }
+      
      
     }
 
