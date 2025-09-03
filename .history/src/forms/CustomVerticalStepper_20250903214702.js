@@ -84,7 +84,7 @@ export default function CustomVerticalStepper() {
       }
     });
 
-    const committees = ["DISEC", "AIPPM", "UNCSW","CCC","ECOSOC",  "IP"];
+    
     committees.forEach((committee) => {
       if (!selectedCommittees.has(committee)) {
         errors.push(
