@@ -76,7 +76,7 @@ export default function PersonalDetailsStep({
 
       <textarea
         className="mun-experience"
-        placeholder="Describe the delegation Experience (if any): Participant name/Conference name/committee/ portfolio/ award"
+        placeholder="escribe the delegation Experience (if any) Participant name/Conference name/committee/ portfolio/ award"
         value={munExperienceDetails}
         onChange={(e) => setMunExperienceDetails(e.target.value)}
       />
