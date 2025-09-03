@@ -113,7 +113,7 @@ export default function PersonalDetailsStep({
           htmlFor="external"
           className={`btn ${!isVasavi ? "selected" : ""}`}
         >
-          External Delegation
+          External Delegate
         </label>
       </div>
 
