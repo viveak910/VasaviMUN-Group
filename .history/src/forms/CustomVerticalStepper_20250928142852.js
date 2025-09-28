@@ -258,7 +258,7 @@ export default function CustomVerticalStepper() {
 
       
      
-    }
+    // }
 
     return true;
   };
