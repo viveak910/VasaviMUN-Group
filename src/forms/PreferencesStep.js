@@ -1,14 +1,13 @@
 import React from "react";
 import { FaBookOpen } from "react-icons/fa";
 
-const committees = ["DISEC", "AIPPM", "UNCSW","CCC","ECOSOC",  "IP"];
+const committees = ["DISEC", "AIPPM", "UNHRC","NATO", "IP"];
 const ipRoles = [
   "Photographer",
   "Reporter - DISEC",
   "Reporter - AIPPM",
-  "Reporter - UNCSW",
-  "Reporter - CCC",
-  "Reporter - ECOSOC",
+  "Reporter - UNHRC",
+  "Reporter - NATO",
 ];
 
 
@@ -61,7 +60,7 @@ export default function PreferencesStep({
           <h3>Committee Preference</h3>
         </label>
         <a
-          href="https://docs.google.com/spreadsheets/d/1ky95En31kh9bPilrmpr-KDiAzhIRpgWo3IeF1MmnNf8/edit?gid=128263296#gid=128263296"
+          href="https://docs.google.com/spreadsheets/d/15ZVV8TdOkXpDK4Ja6B0X_IA7Vb6BEUgcEqw4IJORsoc/edit?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -92,7 +91,7 @@ export default function PreferencesStep({
           value={participantsCount}
           onChange={handleParticipantsCountChange}
         >
-          {[...Array(11).keys()].map((_, i) => (
+          {[...Array(13).keys()].map((_, i) => (
             <option key={i} value={i + 8}>
               {i + 8}
             </option>

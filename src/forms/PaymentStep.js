@@ -14,7 +14,7 @@ export default function PaymentStep({
   utr,
   setUtr,
 }) {
-  const baseFee = isVasavi ? 900 : 1300;
+  const baseFee = isVasavi ? 800 : 1300;
   const totalFee = baseFee * participantsCount;
   const upiID = isVasavi ? "myakalayashwanth2005@okhdfcbank" : "myakalayashwanth2005@okhdfcbank";
   const no = isVasavi ? "8374878822" : "9866096974";
@@ -32,7 +32,7 @@ export default function PaymentStep({
 
     <p>
       Thank you for your interest in our{" "}
-      <strong>Dynamic Round registrations</strong>. We will receive your
+      <strong>Priority Round registrations</strong>. We will receive your
       registration after submission, and our team will reach out to you within
       approximately two to three business days. We kindly request your patience
       during this period.
@@ -47,8 +47,7 @@ export default function PaymentStep({
           Best regards, <br />
           <strong>VASAVIMUN</strong>
         </p>
-      {/*
-      <h2>Pay the registration fee of ₹{totalFee}</h2>
+      {/* <h2>Pay the registration fee of ₹{totalFee}</h2>
       <div className="hd">
         <label className="btn">
           <h3>Payment</h3>
@@ -128,9 +127,8 @@ export default function PaymentStep({
           For payment issues, contact: {no}
         </h5>
       </div>
-      */}
 
-      {/* <div
+      <div
         style={{
           display: "flex",
           justifyContent: "center",
@@ -147,7 +145,7 @@ export default function PaymentStep({
           }}
         >
           <img
-            src={QR}
+            src={"#"}
             alt="QR Code"
             style={{
               height: "auto",
