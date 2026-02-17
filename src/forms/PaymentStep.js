@@ -17,7 +17,7 @@ export default function PaymentStep({
   const baseFee = isVasavi ? 800 : 1300;
   const totalFee = baseFee * participantsCount;
   const upiID = "8897327157@axl";
-  const no = isVasavi ? "8374878822" : "9866096974";
+  const no = isVasavi ? "8341565849" : "9347454299";
 
   useEffect(() => {
     setAmount(totalFee);
