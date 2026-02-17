@@ -1,10 +1,10 @@
 import React from "react";
 import { FaBookOpen } from "react-icons/fa";
 
-const committees = ["DISEC", "AIPPM", "UNHRC", "NATO", "IP"];
+const committees = ["UNGA-DISEC", "AIPPM", "UNHRC", "NATO", "IP"];
 const ipRoles = [
   "Photographer",
-  "Reporter - DISEC",
+  "Reporter - UNGA-DISEC",
   "Reporter - AIPPM",
   "Reporter - NATO",
   "Reporter - UNHRC",

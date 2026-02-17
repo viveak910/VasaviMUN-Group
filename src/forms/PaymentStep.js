@@ -2,6 +2,7 @@ import React from "react";
 import { FaRegCopy } from "react-icons/fa";
 //import qrCode1 from "./AnanyaQR.png";
 //import qrCode2 from "./QR2.png";
+import qrCode3 from "./qr_yashwant.jpeg";
 export default function PaymentStep({
   isVasavi,
   transactionId,
@@ -28,7 +29,7 @@ export default function PaymentStep({
 
   return (
     <div>
-      <h1>Dear Delegate,</h1>
+      {/* <h1>Dear Delegate,</h1>
 
     <p>
       Thank you for your interest in our{" "}
@@ -46,8 +47,8 @@ export default function PaymentStep({
         <p>
           Best regards, <br />
           <strong>VASAVIMUN</strong>
-        </p>
-      {/* <h2>Pay the registration fee of ₹{totalFee}</h2>
+        </p> */}
+      <h2>Pay the registration fee of ₹{totalFee}</h2>
       <div className="hd">
         <label className="btn">
           <h3>Payment</h3>
@@ -145,7 +146,7 @@ export default function PaymentStep({
           }}
         >
           <img
-            src={"#"}
+            src={qrCode3}
             alt="QR Code"
             style={{
               height: "auto",
@@ -154,7 +155,7 @@ export default function PaymentStep({
             }}
           />
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
