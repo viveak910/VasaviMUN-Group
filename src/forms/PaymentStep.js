@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaRegCopy } from "react-icons/fa";
-//import qrCode1 from "./AnanyaQR.png";
-//import qrCode2 from "./QR2.png";
 import qrCode3 from "./qr_yashwant.jpeg";
+
 export default function PaymentStep({
   isVasavi,
   transactionId,
@@ -17,145 +16,113 @@ export default function PaymentStep({
 }) {
   const baseFee = isVasavi ? 800 : 1300;
   const totalFee = baseFee * participantsCount;
-  const upiID = isVasavi ? "myakalayashwanth2005@okhdfcbank" : "myakalayashwanth2005@okhdfcbank";
+  const upiID = "8897327157@axl";
   const no = isVasavi ? "8374878822" : "9866096974";
-  //const QR = isVasavi ? qrCode1 : qrCode1;
-  setAmount(totalFee);
+
+  useEffect(() => {
+    setAmount(totalFee);
+  }, [totalFee, setAmount]);
+
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {
-      alert("UPI ID copied to clipboard!");
+      alert("UPI ID copied!");
     });
   };
 
   return (
-    <div>
-      {/* <h1>Dear Delegate,</h1>
-
-    <p>
-      Thank you for your interest in our{" "}
-      <strong>Priority Round registrations</strong>. We will receive your
-      registration after submission, and our team will reach out to you within
-      approximately two to three business days. We kindly request your patience
-      during this period.
-    </p>
-
-    <p>
-      Thank you. We appreciate your understanding and look forward to
-      connecting with you soon.
-    </p>
-
-        <p>
-          Best regards, <br />
-          <strong>VASAVIMUN</strong>
-        </p> */}
+    <div style={{ textAlign: "center", color: "white" }}>
       <h2>Pay the registration fee of ₹{totalFee}</h2>
-      <div className="hd">
-        <label className="btn">
-          <h3>Payment</h3>
-        </label>
+
+      {/* Payment Inputs */}
+      <div
+        style={{
+          marginTop: "20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
         <input
           type="text"
-          id="transaction-id"
           placeholder="Enter Transaction ID"
           value={transactionId}
           onChange={(e) => setTransactionId(e.target.value)}
+          style={{ padding: "10px", width: "250px" }}
         />
+
         <input
           type="text"
-          id="drive-link"
           placeholder="Payment Screenshot (Drive Link)"
           value={driveLink}
           onChange={(e) => setDriveLink(e.target.value)}
+          style={{ padding: "10px", width: "250px" }}
         />
-        <p
-          style={{
-            marginTop: "5px",
-            fontSize: "0.9rem",
-            color: "#fff",
-          }}
-        >
-          Ensure access is not restricted
+
+        <p style={{ fontSize: "0.9rem" }}>
+          Ensure drive access is not restricted
         </p>
       </div>
 
+      {/* UPI Section */}
       <div
         style={{
+          marginTop: "25px",
           display: "flex",
-          alignItems: "center",
           justifyContent: "center",
-          marginTop: "15px",
-          flexDirection: "column",
+          alignItems: "center",
+          gap: "10px",
         }}
       >
-        <div
+        <p
           style={{
-            display: "flex",
-            alignItems: "center",
+            padding: "8px 15px",
+            borderRadius: "8px",
+            backgroundColor: "black",
+            fontWeight: "bold",
           }}
         >
-          <p
-            style={{
-              padding: "8px",
-              borderRadius: "8px",
-              marginRight: "10px",
-              backgroundColor: "black",
-              color: "white",
-              fontSize: "1rem",
-              fontWeight: "bold",
-              display: "inline-block",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {upiID}
-          </p>
-          <FaRegCopy
-            onClick={() => copyToClipboard(upiID)}
-            style={{
-              cursor: "pointer",
-              fontSize: "1.5rem",
-              color: "#fff",
-            }}
-          />
-        </div>
-        <h5
+          {upiID}
+        </p>
+
+        <FaRegCopy
+          onClick={() => copyToClipboard(upiID)}
           style={{
-            marginTop: "10px",
-            textAlign: "center",
-            fontSize: "1.2rem",
-            color: "#fff",
+            cursor: "pointer",
+            fontSize: "1.4rem",
           }}
-        >
-          For payment issues, contact: {no}
-        </h5>
+        />
       </div>
 
+      {/* OR Text */}
+      <p style={{ marginTop: "25px", fontWeight: "bold" }}>
+        OR Use the QR Code Below
+      </p>
+
+      {/* QR Code */}
       <div
         style={{
+          marginTop: "15px",
           display: "flex",
           justifyContent: "center",
-          marginTop: "20px",
-          gap: "20px",
         }}
       >
-        <div
+        <img
+          src={qrCode3}
+          alt="QR Code"
           style={{
-            padding: "10px",
-            borderRadius: "15px",
-            overflow: "hidden",
+            width: "220px",
+            borderRadius: "12px",
             border: "1px solid #ccc",
+            padding: "10px",
+            backgroundColor: "white",
           }}
-        >
-          <img
-            src={qrCode3}
-            alt="QR Code"
-            style={{
-              height: "auto",
-              maxWidth: "100%",
-              borderRadius: "10px",
-            }}
-          />
-        </div>
+        />
       </div>
+
+      <p style={{ marginTop: "20px" }}>
+        For payment issues, contact: {no}
+      </p>
     </div>
   );
 }
